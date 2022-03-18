@@ -1,7 +1,7 @@
 ## Weekly Report 1
 
 
-### What I've done this week?
+### What have I done this week?
 
 
 I've been contemplating if my choice for subject is too demanding but the subject is what by far interests me the most
