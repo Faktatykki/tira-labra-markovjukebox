@@ -2,7 +2,9 @@
 
 **Language:** English
 
-**Programming language:** Java
+**Main programming language:** Java
+
+**Other programming languages for peer reviewing:** Python, JavaScript 
 
 **Study Program:** Tietojenkäsittelytieteen kandidaatti
 
