@@ -4,12 +4,12 @@
 
 [Requirement Specification](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/requirement_specification.md)
 
-#### Weekly reports
+### Weekly reports
 
 [Week 1](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_1.md)
 
 
-#### Testaaminen
+### Testaaminen
 
 Testien suorittaminen tapahtuu komennolla: 
 
@@ -28,7 +28,7 @@ Jos ylläoleva komento ei toimi, kannattaa kokeilla seuraavaa:
 mvn clean jacoco:prepare-agent install jacoco:report
 ```
 
-#### JavaDoc
+### JavaDoc
 
 JavaDoc luodaan komennolla
 ```
@@ -37,7 +37,7 @@ mvn javadoc:javadoc
 Tarkasteltava JavaDoc löytyy avaamalla tiedosto
 *target/site/apidocs/index.html*
 
-#### Checkstyle 
+### Checkstyle 
 
 Checkstyle-tarkistukset saa suoritettua komennolla: 
 
