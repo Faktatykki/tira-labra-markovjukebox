@@ -11,18 +11,18 @@
 
 ### Testaaminen
 
-Testien suorittaminen tapahtuu komennolla: 
+Run tests: 
 
 ```
 mvn test
 ```
   
-Jacoco-testikattavuusraportin luominen tapahtuu komennolla:
+Jacoco coverage report:
 
 ```
 mvn jacoco:report
 ```
-Jos ylläoleva komento ei toimi, kannattaa kokeilla seuraavaa: 
+If that didn't work, try: 
 
 ```
 mvn clean jacoco:prepare-agent install jacoco:report
@@ -30,19 +30,19 @@ mvn clean jacoco:prepare-agent install jacoco:report
 
 ### JavaDoc
 
-JavaDoc luodaan komennolla
+Create JavaDoc:
 ```
 mvn javadoc:javadoc
 ```
-Tarkasteltava JavaDoc löytyy avaamalla tiedosto
+JavaDoc file can be found in:
 *target/site/apidocs/index.html*
 
 ### Checkstyle 
 
-Checkstyle-tarkistukset saa suoritettua komennolla: 
+Checkstyle: 
 
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
 
-Mahdolliset virheilmoitukset löytyvät tiedostosta *target/site/checkstyle.html*
+Errors can be found in *target/site/checkstyle.html*
