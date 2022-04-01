@@ -18,7 +18,7 @@ If that didn't work, try:
 
 ```
 mvn clean jacoco:prepare-agent install jacoco:report  
- 
+```
   
 
 ### Unit testing  
@@ -42,5 +42,5 @@ method actually writes a new MIDI-file when generating is done.
 #### Test coverage report  
 
 
-![image](testcoverage.png)
+![image](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/testcoverage.png)
 
