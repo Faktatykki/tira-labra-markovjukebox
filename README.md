@@ -6,10 +6,11 @@
 
 ### Weekly reports
 
-[Week 1](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_1.md)
+[Week 1](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_1.md)  
+[Week 2](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_2.md)
 
 
-### Testaaminen
+### Testing
 
 Run tests: 
 
