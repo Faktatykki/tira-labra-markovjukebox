@@ -42,5 +42,5 @@ method actually writes a new MIDI-file when generating is done.
 #### Test coverage report  
 
 
-![image](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/testcoverage.png)
+![image](testcoverage.png)
 
