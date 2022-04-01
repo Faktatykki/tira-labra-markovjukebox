@@ -10,7 +10,7 @@ public class TrieNode {
     public TrieNode(int d) {
         this.key = d;
         this.freq = 1;
-        this.children = new TrieNode[36];
+        this.children = new TrieNode[128];
         this.canTerminate = false;
     }
 

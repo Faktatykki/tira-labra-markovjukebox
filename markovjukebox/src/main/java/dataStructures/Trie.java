@@ -1,16 +1,17 @@
 package dataStructures;
 
 
-import java.util.Arrays;
+import java.util.List;
+
 
 public class Trie {
 
     private TrieNode root;
-    private int degree;
+    private int order;
 
-    public Trie(int d) {
+    public Trie(int o) {
         this.root = new TrieNode(-1);
-        this.degree = d + 1;
+        this.order = o + 1;
     }
 
     /**
@@ -20,17 +21,21 @@ public class Trie {
      *
      * @param sequence
      */
-    public void insert(int[] sequence) {
-        if (sequence.length < degree) {
+    public void insert(List<Integer> sequence) {
+        if (sequence.size() < order) {
             return;
         }
 
         TrieNode curRoot;
 
-        for (int i = 0; i < sequence.length - (degree - 1) ; i++) {
+        for (int i = 0; i < sequence.size() - (order - 1) ; i++) {
             curRoot = this.root;
-            for (int j = i; j < i + degree; j++) {
-                int note = sequence[j];
+            for (int j = i; j < i + order; j++) {
+                int note = sequence.get(j);
+
+                if (note < 0) {
+                    note = 0;
+                }
 
                 if (curRoot.getChildren()[note] == null) {
                     curRoot.getChildren()[note] = new TrieNode(note);
@@ -40,7 +45,7 @@ public class Trie {
 
                 curRoot = curRoot.getChildren()[note];
 
-                if ((j + 1 == i + degree && !curRoot.canTerminate())) {
+                if ((j + 1 == i + order && !curRoot.canTerminate())) {
                     curRoot.setCanTerminate(true);
                 }
             }
@@ -52,15 +57,15 @@ public class Trie {
      * sequence and returns them
      *
      * @param sequence
-     * @return
+     * @return children of given sequence's second to last node
      */
-    public TrieNode[] search(int[] sequence) {
+    public TrieNode[] search(List<Integer> sequence) {
         int note;
         TrieNode node;
         TrieNode curRoot = this.root;
 
-        for (int i = 0; i < sequence.length; i++) {
-            note = sequence[i];
+        for (int i = 0; i < sequence.size(); i++) {
+            note = sequence.get(i);
             node = curRoot.getChildren()[note];
 
             if (node == null) {
