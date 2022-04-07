@@ -1,4 +1,4 @@
-package dataStructures;
+package datastructures;
 
 public class TrieNode {
 

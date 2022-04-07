@@ -1,6 +1,7 @@
 package utilities;
 
 
+import datastructures.NoteObject;
 import jm.music.data.*;
 import jm.util.*;
 
@@ -24,7 +25,7 @@ public class MidiHandler {
      *
      * @return Array list representation of input midi-file
      */
-    public ArrayList<Integer> getTrainingData() {
+    public ArrayList<NoteObject> getTrainingData() {
         inputMidiToScore();
 
         return midiToArray();
@@ -35,17 +36,21 @@ public class MidiHandler {
      *
      * @param generatedNotes
      */
-    public void outputScoreToMidi(List<Integer>  generatedNotes) {
+    //muuta noteobject listiks ettei tarvii olla kahta listaa
+    public void outputScoreToMidi(List<Integer> generatedNotes, List<Double> rhythm) {
         Part part = new Part("Something");
         Phrase phrase = new Phrase(0.0);
 
         for (int i = 0; i < generatedNotes.size(); i++) {
-            Note note = new Note(generatedNotes.get(i), 0.4);
+            System.out.println("RYTMIT");
+            System.out.println(rhythm.get(i));
+            Note note = new Note(generatedNotes.get(i), rhythm.get(i));
             phrase.add(note);
         }
 
         part.addPhrase(phrase);
         this.outputScore.addPart(part);
+
 
         try {
             Write.midi(this.outputScore, "../markovjukebox/src/main/java/Testi.mid");
@@ -65,16 +70,18 @@ public class MidiHandler {
      * From a Score-object, which represents given midi-input file, creates an ArrayList representation
      * of pitches of given input
      *
-     * @return
+     * @return arraylist representation of a input midi-file
      */
-    private ArrayList<Integer> midiToArray() {
-        ArrayList<Integer> sequence = new ArrayList<>();
+    private ArrayList<NoteObject> midiToArray() {
+        ArrayList<NoteObject> sequence = new ArrayList<>();
 
         Phrase phrase = this.inputScore.getPart(0).getPhrase(0);
 
         for (int i = 0; i < phrase.size(); i++) {
             int note = phrase.getNote(i).getPitch();
-            sequence.add(note);
+            double rhythm = phrase.getNote(i).getRhythmValue();
+
+            sequence.add(new NoteObject(note, rhythm));
         }
 
         return sequence;

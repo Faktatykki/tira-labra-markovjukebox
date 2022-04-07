@@ -1,3 +1,4 @@
+import datastructures.NoteObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,14 +24,14 @@ public class TestMidiHandler {
 
     @Test
     public void midiToArrayWorks() {
-        List<Integer> notes = this.mh.getTrainingData();
+        List<NoteObject> notes = this.mh.getTrainingData();
 
         assertThat(notes, instanceOf(List.class));
     }
 
     @Test
     public void readsRightAmountOfData() {
-        List<Integer> notes = this.mh.getTrainingData();
+        List<NoteObject> notes = this.mh.getTrainingData();
 
         assertEquals(notes.size(), 1252);
     }
@@ -38,10 +39,15 @@ public class TestMidiHandler {
     @Test
     public void createsMidiFile() {
         List<Integer> notes = new ArrayList<>();
+        List<Double> rhythms = new ArrayList<>();
+
         notes.add(1);
         notes.add(2);
 
-        this.mh.outputScoreToMidi(notes);
+        rhythms.add(1.0);
+        rhythms.add(2.0);
+
+        this.mh.outputScoreToMidi(notes, rhythms);
         File testFile = new File("../markovjukebox/src/main/java/Testi.mid");
 
         assertTrue(testFile.isFile());

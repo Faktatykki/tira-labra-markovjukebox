@@ -1,118 +1,63 @@
 package generator;
 
+import datastructures.NoteObject;
+import jm.music.data.Note;
 import utilities.*;
-import dataStructures.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Random;
+
 
 public class MarkovGenerator {
 
     private int order;
-    private Trie trie;
-    private List<Integer> queue;
-    private List<Integer> generatedNotes;
+    private MelodyGenerator melodyGenerator;
+    //väliaikainen
+    private List<Double> rhythmValues;
     private MidiHandler midiHandler;
-
+    private List<Integer> trainingSet;
 
     public MarkovGenerator(int order) {
+
         this.order = order;
-        this.trie = new Trie(order);
-        this.queue = new ArrayList();
-        this.generatedNotes = new ArrayList<>();
+        this.melodyGenerator = new MelodyGenerator(order);
+        this.rhythmValues = new ArrayList<>();
         this.midiHandler = new MidiHandler();
+        this.trainingSet = new ArrayList<>();
+
     }
 
     /**
      * Goes through the process of generating a new song based on input:
      *
-     * Reads input
-     * Creates sequences based on input
+     * Calls readTrainingSet-function which generates a melody sequence
+     * based on given input and saves is it in melodyGenerator-object.
+     * Then generated notes can be passed to midiHandler, which
+     * outputs generated notes as a midi-file.
+     *
+     *
      * outputs a new midi-file of generated notes
      */
     public void generateSong() {
         readTrainingSet();
-        createSequence();
-        midiHandler.outputScoreToMidi(this.generatedNotes);
+
+        List<Integer> generatedNotes = this.melodyGenerator.getGeneratedNotes();
+
+        midiHandler.outputScoreToMidi(generatedNotes, this.rhythmValues);
     }
 
     /**
-     * Reads the given training data and inserts it to trie
+     * Reads the given training data and passes it to melodyGenerator to generate
+     * a song based on training data
      */
     public void readTrainingSet() {
-        ArrayList<Integer> trainingSet = midiHandler.getTrainingData();
-        this.trie.insert(trainingSet);
-    }
+        List<NoteObject> l = midiHandler.getTrainingData();
 
-    /**
-     * Generates a song based on inserted nodes of trie and nodes weights
-     * For now generates only 100 notes
-     */
-    public void createSequence() {
-        for (int i = 0; i < 100; i++) {
-            TrieNode[] children = this.trie.search(this.queue);
-
-            if (children == null) {
-                this.queue.clear();
-                continue;
-            }
-
-            int pickedChild = getRandom(children);
-
-            this.queue.add(pickedChild);
-
-            this.generatedNotes.add(pickedChild);
-            //System.out.println("generated notes: " + this.generatedNotes);
-
-            if (queue.size() == order + 1) {
-                queue.remove(0);
-                //System.out.println("markov chain: " + this.queue);
-            }
-        }
-    }
-
-    /**
-     * Chooses randomly next element from the children nodes of sequence, considering weights
-     * of nodes
-     *
-     * @param children
-     */
-    public int getRandom(TrieNode[] children) {
-        Random rand = new Random();
-
-        List<Integer> weightedList = getWeightedList(children);
-        int randomIndex = rand.nextInt(weightedList.size());
-        int pickedChild = weightedList.get(randomIndex);
-
-        return pickedChild;
-    }
-
-    /**
-     * Creates a list based on frequencies of certain node's children seen in Trie
-     *
-     * @param children
-     * @return weighted list
-     */
-    public List<Integer> getWeightedList(TrieNode[] children) {
-        List<Integer> weightedList = new ArrayList<>();
-
-        for (int i = 0; i < children.length; i++) {
-            if (children[i] == null) {
-                continue;
-            }
-
-            TrieNode node = children[i];
-            int nodeWeight = node.getFreq();
-
-            for (int j = 0; j < nodeWeight; j++) {
-                weightedList.add(node.getKey());
-            }
+        for (int i = 0; i < l.size(); i++) {
+            this.trainingSet.add(l.get(i).getPitch());
+            this.rhythmValues.add(l.get(i).getRhythm());
         }
 
-        return weightedList;
+        this.melodyGenerator.createMelody(trainingSet);
     }
-
-
 }

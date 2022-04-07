@@ -1,6 +1,6 @@
 
-import dataStructures.Trie;
-import dataStructures.TrieNode;
+import datastructures.Trie;
+import datastructures.TrieNode;
 import org.junit.Test;
 
 import java.util.Arrays;

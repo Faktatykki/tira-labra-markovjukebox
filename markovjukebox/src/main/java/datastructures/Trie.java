@@ -1,4 +1,4 @@
-package dataStructures;
+package datastructures;
 
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class Trie {
 
         TrieNode curRoot;
 
-        for (int i = 0; i < sequence.size() - (order - 1) ; i++) {
+        for (int i = 0; i < sequence.size() - (order - 1); i++) {
             curRoot = this.root;
             for (int j = i; j < i + order; j++) {
                 int note = sequence.get(j);
@@ -76,5 +76,9 @@ public class Trie {
         }
 
         return curRoot.getChildren();
+    }
+
+    public int getOrder() {
+        return this.order;
     }
 }
