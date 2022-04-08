@@ -22,10 +22,10 @@ mvn compile exec:java -Dexec.mainClass=Main
 
 ```
 
-**Week 3 note!**
+**Week 4 note!**
 
-The program is using 'GiantSteps.mid' as a training data and after executing there should be
-a file 'Testi.mid' which is the generated song based on Giant Steps. 
+The program is using 'bourree.mid' as a training data and after executing there should be
+a file 'Testi.mid' which is the generated song based on Bach's Bourrée. 
 
 ### Testing
 
