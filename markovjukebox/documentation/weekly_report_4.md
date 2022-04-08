@@ -4,7 +4,8 @@
 ### What have I done this week? / How program has progressed?
 
 I've done a major refactoring architecture wise and made sense how to build some kind of rhythm addition to melody. Class MarkovGenerator acts as
-a service class for melody creating, rhythm creating and handling files. 
+a service class for melody creating, rhythm creating and handling files. Top of this I began with performance tests. Only testing performance of
+populating trie for now.
 
 ### What have I learned this week?
 
