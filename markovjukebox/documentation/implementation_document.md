@@ -55,9 +55,9 @@ n = Markov chain order
 
 
 https://www.cs.cmu.edu/~music/cmsip/slides/05-algo-comp.pdf  
-https://medium.com/hackernoon/generating-music-using-markov-chains-40c3f3f46405 
+https://medium.com/hackernoon/generating-music-using-markov-chains-40c3f3f46405   
 https://en.wikipedia.org/wiki/Markov_chain  
-https://explodingart.com/jmusic/jmtutorial/t1.html
-https://explodingart.com/jmusic/jmDocumentation/overview-summary.html  
+https://explodingart.com/jmusic/jmtutorial/t1.html 
+https://explodingart.com/jmusic/jmDocumentation/overview-summary.html   
 https://eprints.qut.edu.au/6805/1/6805.pdf  
 
