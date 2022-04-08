@@ -3,7 +3,7 @@
 
 ## Documentation
 
-[Requirement Specification](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/requirement_specification.md)
+[Requirement Specification](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/requirement_specification.md)  
 [Test documentation](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/testdocumentation.md)
 
 ### Weekly reports
@@ -11,6 +11,7 @@
 [Week 1](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_1.md)  
 [Week 2](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_2.md)  
 [Week 3](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_3.md)
+[Week 4](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/weekly_report_4.md)
 
 ### Executing
 
