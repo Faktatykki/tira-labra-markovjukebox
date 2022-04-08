@@ -1,9 +1,12 @@
 package generator;
 
+import datastructures.NoteObject;
 import datastructures.Trie;
+import jm.music.data.Note;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MelodyGenerator {
 
@@ -21,12 +24,14 @@ public class MelodyGenerator {
      * Populates a trie based on training set and passes the resulting
      * trie to the sequenceCreator
      *
-     *
      * @param trainingSet training set as a training set
      */
-    public void createMelody(List<Integer> trainingSet) {
-        populateTrie(trainingSet);
-        this.generatedNotes = sequencer.createSequence(this.melodyTrie, trainingSet.size());
+    public void createMelody(List<NoteObject> trainingSet) {
+        List<Integer> pitches = parsePitches(trainingSet);
+
+        populateTrie(pitches);
+
+        this.generatedNotes = sequencer.createSequence(this.melodyTrie, pitches.size());
     }
 
     /**
@@ -45,5 +50,9 @@ public class MelodyGenerator {
      */
     private void populateTrie(List<Integer> notes) {
         this.melodyTrie.insert(notes);
+    }
+
+    private List<Integer> parsePitches(List<NoteObject> trainingSet) {
+        return trainingSet.stream().map(note -> note.getPitch()).collect(Collectors.toList());
     }
 }

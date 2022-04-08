@@ -1,6 +1,7 @@
 package generator;
 
 import datastructures.NoteObject;
+
 import jm.music.data.Note;
 import utilities.*;
 
@@ -10,21 +11,19 @@ import java.util.ArrayList;
 
 public class MarkovGenerator {
 
-    private int order;
+    private final int order;
     private MelodyGenerator melodyGenerator;
-    //väliaikainen
-    private List<Double> rhythmValues;
     private MidiHandler midiHandler;
-    private List<Integer> trainingSet;
+    private List<NoteObject> trainingSet;
+    private List<NoteObject> generatedSet;
 
     public MarkovGenerator(int order) {
 
         this.order = order;
         this.melodyGenerator = new MelodyGenerator(order);
-        this.rhythmValues = new ArrayList<>();
         this.midiHandler = new MidiHandler();
         this.trainingSet = new ArrayList<>();
-
+        this.generatedSet = new ArrayList<>();
     }
 
     /**
@@ -39,25 +38,40 @@ public class MarkovGenerator {
      * outputs a new midi-file of generated notes
      */
     public void generateSong() {
-        readTrainingSet();
+        readTrainingSetFromMidi();
 
+        this.melodyGenerator.createMelody(trainingSet);
         List<Integer> generatedNotes = this.melodyGenerator.getGeneratedNotes();
 
-        midiHandler.outputScoreToMidi(generatedNotes, this.rhythmValues);
+        combineGeneratedProperties(generatedNotes);
+
+        midiHandler.outputScoreToMidi(this.generatedSet);
     }
 
     /**
      * Reads the given training data and passes it to melodyGenerator to generate
      * a song based on training data
      */
-    public void readTrainingSet() {
-        List<NoteObject> l = midiHandler.getTrainingData();
+    public void readTrainingSetFromMidi() {
+        this.trainingSet = midiHandler.getTrainingData();
+    }
 
-        for (int i = 0; i < l.size(); i++) {
-            this.trainingSet.add(l.get(i).getPitch());
-            this.rhythmValues.add(l.get(i).getRhythm());
+    public void setTrainingSet(List<NoteObject> notes) {
+        this.trainingSet = notes;
+    }
+
+    public void combineGeneratedProperties(List<Integer> generatedNotes) {
+
+        for (int i = 0; i < generatedNotes.size(); i++) {
+            int pitch = generatedNotes.get(i);
+            double rhythm = trainingSet.get(i).getRhythm();
+            double duration = trainingSet.get(i).getDuration();
+            
+            this.generatedSet.add(new NoteObject(pitch, rhythm, duration));
         }
+    }
 
-        this.melodyGenerator.createMelody(trainingSet);
+    public List<NoteObject> getGeneratedSet() {
+        return this.generatedSet;
     }
 }

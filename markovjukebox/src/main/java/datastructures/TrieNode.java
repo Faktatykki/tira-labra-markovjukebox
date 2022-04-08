@@ -26,6 +26,10 @@ public class TrieNode {
         this.freq += 1;
     }
 
+    public void setFreq(int freq) {
+        this.freq = freq;
+    }
+
     public TrieNode[] getChildren() {
         return this.children;
     }

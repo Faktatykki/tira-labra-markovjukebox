@@ -13,6 +13,7 @@ public class MidiHandler {
 
     private Score inputScore;
     private Score outputScore;
+    private double tempo;
 
     public MidiHandler() {
         this.inputScore = new Score("Input");
@@ -37,20 +38,23 @@ public class MidiHandler {
      * @param generatedNotes
      */
     //muuta noteobject listiks ettei tarvii olla kahta listaa
-    public void outputScoreToMidi(List<Integer> generatedNotes, List<Double> rhythm) {
+    public void outputScoreToMidi(List<NoteObject> generatedNotes) {
         Part part = new Part("Something");
         Phrase phrase = new Phrase(0.0);
 
         for (int i = 0; i < generatedNotes.size(); i++) {
-            System.out.println("RYTMIT");
-            System.out.println(rhythm.get(i));
-            Note note = new Note(generatedNotes.get(i), rhythm.get(i));
+            NoteObject curNote = generatedNotes.get(i);
+
+            Note note = new Note(curNote.getPitch(), curNote.getRhythm());
+            note.setDuration(curNote.getDuration());
+
             phrase.add(note);
         }
 
         part.addPhrase(phrase);
         this.outputScore.addPart(part);
 
+        this.outputScore.setTempo(this.tempo);
 
         try {
             Write.midi(this.outputScore, "../markovjukebox/src/main/java/Testi.mid");
@@ -63,7 +67,8 @@ public class MidiHandler {
      * Reads a midi-file and puts it to Score-object (file path is hard coded for now)
      */
     private void inputMidiToScore() {
-        Read.midi(this.inputScore, "../markovjukebox/src/main/java/GiantSteps.mid");
+        Read.midi(this.inputScore, "../markovjukebox/src/main/java/bourree.mid");
+        this.tempo = this.inputScore.getTempo();
     }
 
     /**
@@ -80,13 +85,11 @@ public class MidiHandler {
         for (int i = 0; i < phrase.size(); i++) {
             int note = phrase.getNote(i).getPitch();
             double rhythm = phrase.getNote(i).getRhythmValue();
+            double duration = phrase.getNote(i).getDuration();
 
-            sequence.add(new NoteObject(note, rhythm));
+            sequence.add(new NoteObject(note, rhythm, duration));
         }
 
         return sequence;
     }
-
-
-
 }

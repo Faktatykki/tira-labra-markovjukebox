@@ -12,6 +12,8 @@ public class SequenceCreator {
     /**
      * Generates a song based on inserted nodes of trie and nodes weights
      * length of a training set
+     *
+     * @return generated sequence based on passed trie
      */
     public List<Integer> createSequence(Trie trie, int size) {
         List<Integer> generated = new ArrayList<>();
@@ -46,6 +48,7 @@ public class SequenceCreator {
      * of nodes
      *
      * @param children
+     * @return random children of given array based on node weights
      */
     public int getRandom(TrieNode[] children) {
         Random rand = new Random();
