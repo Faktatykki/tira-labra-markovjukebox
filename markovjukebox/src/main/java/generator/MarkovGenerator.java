@@ -66,7 +66,7 @@ public class MarkovGenerator {
             int pitch = generatedNotes.get(i);
             double rhythm = trainingSet.get(i).getRhythm();
             double duration = trainingSet.get(i).getDuration();
-            
+
             this.generatedSet.add(new NoteObject(pitch, rhythm, duration));
         }
     }
