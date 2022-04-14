@@ -40,7 +40,7 @@ public class PerformanceTests {
     }
 
     public void populateTrie(int order, int sequenceSize) {
-        Trie trie = new Trie(order);
+        Trie trie = new Trie(order, 128);
         List<Integer> notes = new ArrayList<>();
 
         for (int i = 0; i < sequenceSize; i++) {

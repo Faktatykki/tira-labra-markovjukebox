@@ -6,12 +6,15 @@ import java.util.List;
 
 public class Trie {
 
+    private int range;
     private TrieNode root;
     private int order;
 
-    public Trie(int o) {
-        this.root = new TrieNode(-1);
-        this.order = o + 1;
+
+    public Trie(int order, int range) {
+        this.range = range;
+        this.root = new TrieNode(-1, this.range);
+        this.order = order + 1;
     }
 
     /**
@@ -38,7 +41,7 @@ public class Trie {
                 }
 
                 if (curRoot.getChildren()[note] == null) {
-                    curRoot.getChildren()[note] = new TrieNode(note);
+                    curRoot.getChildren()[note] = new TrieNode(note, this.range);
                 } else {
                     curRoot.getChildren()[note].addFreq();
                 }

@@ -57,8 +57,9 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>generator/*MelodyGenerator.*</exclude>
+                        <exclude>generator/*MarkovGenerator.*</exclude>
                         <exclude>*Main.*</exclude>
+                        <exclude>*PerformanceTests.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

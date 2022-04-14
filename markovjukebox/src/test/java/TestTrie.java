@@ -12,7 +12,7 @@ public class TestTrie {
 
     @Test
     public void firstOrderWorks() {
-        Trie t = new Trie(1);
+        Trie t = new Trie(1, 128);
         Integer[] seq = {2, 3, 2, 5, 4, 6, 7, 2, 5};
         List<Integer> arr = Arrays.asList(seq);
 
@@ -32,7 +32,7 @@ public class TestTrie {
 
     @Test
     public void secondOrderWorks() {
-        Trie t = new Trie(2);
+        Trie t = new Trie(2, 128);
         Integer[] seq = {2, 3, 2, 5, 4, 6, 7, 2, 5, 8};
         List<Integer> arr = Arrays.asList(seq);
 
@@ -52,7 +52,7 @@ public class TestTrie {
 
     @Test
     public void thirdOrderWorks() {
-        Trie t = new Trie(3);
+        Trie t = new Trie(3, 128);
         Integer[] seq = {2, 3, 2, 5, 4, 6, 7, 2, 5, 4, 9};
         List<Integer> arr = Arrays.asList(seq);
 
@@ -73,7 +73,7 @@ public class TestTrie {
 
     @Test
     public void fourthOrderWorks() {
-        Trie t = new Trie(4);
+        Trie t = new Trie(4, 128);
         Integer[] seq = {2, 3, 2, 5, 4, 6, 7, 2, 5, 4, 6, 8};
         List<Integer> arr = Arrays.asList(seq);
 
@@ -90,7 +90,7 @@ public class TestTrie {
 
     @Test
     public void trieIsEmptyIfTrainingSetIsShorterThanOrder() {
-        Trie t = new Trie(4);
+        Trie t = new Trie(4, 128);
         Integer[] seq = {12, 13, 14};
         List<Integer> arr = Arrays.asList(seq);
 
@@ -107,7 +107,7 @@ public class TestTrie {
 
     @Test
     public void trieBranchesAreNotEqualOrLessThanDegree() {
-        Trie t = new Trie(1);
+        Trie t = new Trie(1, 128);
         Integer[] seq = {1, 2, 3};
         List<Integer> arr = Arrays.asList(seq);
 
@@ -120,12 +120,11 @@ public class TestTrie {
 
     @Test
     public void nodeFrequencyIncrements() {
-        Trie t = new Trie(1);
+        Trie t = new Trie(1, 128);
         Integer[] seq = {2, 3, 2, 3, 4, 3, 5, 2, 4, 3};
         List<Integer> arr = Arrays.asList(seq);
 
         t.insert(arr);
-
 
         TrieNode[] afterTwo = t.search(Arrays.asList(2));
         TrieNode[] afterFour = t.search(Arrays.asList(4));

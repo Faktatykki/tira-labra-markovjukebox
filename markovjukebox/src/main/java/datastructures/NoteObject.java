@@ -3,10 +3,10 @@ package datastructures;
 public class NoteObject {
 
     private int pitch;
-    private double rhythm;
-    private double duration;
+    private int rhythm;
+    private int duration;
 
-    public NoteObject(int pitch, double rhythm, double duration) {
+    public NoteObject(int pitch, int rhythm, int duration) {
         this.pitch = pitch;
         this.rhythm = rhythm;
         this.duration = duration;
@@ -16,23 +16,28 @@ public class NoteObject {
         return this.pitch;
     }
 
-    public double getRhythm() {
+    public int getRhythm() {
         return this.rhythm;
     }
 
-    public double getDuration() {
+    public int getDuration() {
         return this.duration;
     }
 
-    public void setPitch(Integer pitch) {
+    public void setPitch(int pitch) {
         this.pitch = pitch;
     }
 
-    public void setRhythm(double rhythm) {
+    public void setRhythm(int rhythm) {
         this.rhythm = rhythm;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    @Override
+    public String toString() {
+        return "Pitch: " + this.pitch + ", Rhythm: " + this.rhythm + ", Duration: " + this.duration + "\n";
     }
 }

@@ -12,15 +12,12 @@ import java.util.ArrayList;
 public class MarkovGenerator {
 
     private final int order;
-    private MelodyGenerator melodyGenerator;
     private MidiHandler midiHandler;
     private List<NoteObject> trainingSet;
     private List<NoteObject> generatedSet;
 
     public MarkovGenerator(int order) {
-
         this.order = order;
-        this.melodyGenerator = new MelodyGenerator(order);
         this.midiHandler = new MidiHandler();
         this.trainingSet = new ArrayList<>();
         this.generatedSet = new ArrayList<>();
@@ -40,38 +37,18 @@ public class MarkovGenerator {
     public void generateSong() {
         readTrainingSetFromMidi();
 
-        this.melodyGenerator.createMelody(trainingSet);
-        List<Integer> generatedNotes = this.melodyGenerator.getGeneratedNotes();
+        GeneratorService gs = new GeneratorService(3, this.trainingSet);
 
-        combineGeneratedProperties(generatedNotes);
+        List<NoteObject> generatedSong = gs.generate();
 
-        midiHandler.outputScoreToMidi(this.generatedSet);
+        midiHandler.arrayToMidi(generatedSong);
     }
 
     /**
-     * Reads the given training data and passes it to melodyGenerator to generate
+     * Reads the given training data and passes it to GeneratorService to generate
      * a song based on training data
      */
     public void readTrainingSetFromMidi() {
         this.trainingSet = midiHandler.getTrainingData();
-    }
-
-    public void setTrainingSet(List<NoteObject> notes) {
-        this.trainingSet = notes;
-    }
-
-    public void combineGeneratedProperties(List<Integer> generatedNotes) {
-
-        for (int i = 0; i < generatedNotes.size(); i++) {
-            int pitch = generatedNotes.get(i);
-            double rhythm = trainingSet.get(i).getRhythm();
-            double duration = trainingSet.get(i).getDuration();
-
-            this.generatedSet.add(new NoteObject(pitch, rhythm, duration));
-        }
-    }
-
-    public List<NoteObject> getGeneratedSet() {
-        return this.generatedSet;
     }
 }

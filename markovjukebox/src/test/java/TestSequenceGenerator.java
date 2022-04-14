@@ -15,7 +15,7 @@ public class TestSequenceGenerator {
 
     @Before
     public void init() {
-        this.trie = new Trie(2);
+        this.trie = new Trie(2, 128);
         this.sc = new SequenceCreator();
 
         List<Integer> arrList = Arrays.asList(1, 2, 3);
@@ -38,9 +38,9 @@ public class TestSequenceGenerator {
     public void randomGetterWorks() {
         TrieNode[] nodes = new TrieNode[3];
 
-        nodes[0] = new TrieNode(0);
-        nodes[1] = new TrieNode(1);
-        nodes[2] = new TrieNode(2);
+        nodes[0] = new TrieNode(0, 128);
+        nodes[1] = new TrieNode(1, 128);
+        nodes[2] = new TrieNode(2, 128);
 
         nodes[1].setFreq(0);
         nodes[2].setFreq(0);

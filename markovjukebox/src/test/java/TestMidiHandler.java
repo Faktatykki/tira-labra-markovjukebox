@@ -1,5 +1,4 @@
 import datastructures.NoteObject;
-import jm.music.data.Note;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,9 +8,7 @@ import static org.junit.Assert.*;
 import utilities.MidiHandler;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TestMidiHandler {
@@ -45,7 +42,7 @@ public class TestMidiHandler {
             notes.add(new NoteObject(i, i, i));
         }
 
-        this.mh.outputScoreToMidi(notes);
+        this.mh.arrayToMidi(notes);
 
         File testFile = new File("../markovjukebox/src/main/java/Testi.mid");
 

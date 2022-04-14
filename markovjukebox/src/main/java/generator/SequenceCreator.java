@@ -32,11 +32,9 @@ public class SequenceCreator {
             queue.add(pickedChild);
 
             generated.add(pickedChild);
-            //System.out.println("generated notes: " + this.generatedNotes);
 
             if (queue.size() == trie.getOrder()) {
                 queue.remove(0);
-                //System.out.println("markov chain: " + this.queue);
             }
         }
 
@@ -54,6 +52,7 @@ public class SequenceCreator {
         Random rand = new Random();
 
         List<Integer> weightedList = getWeightedList(children);
+
         int randomIndex = rand.nextInt(weightedList.size());
         int pickedChild = weightedList.get(randomIndex);
 
