@@ -39,20 +39,28 @@ elaborated.
 
 Midihandler is still in development since some paths should be given by UI. Now there are tests for if   
 method for MIDI to array of integers works (testing if returns 'List' class), reads all the notes of given  
-training data MIDI-file (for testing there is MIDI-file containing 1252 notes) and that 'outputScoreToMidi'  
+training data MIDI-file (for testing there is MIDI-file containing 264 notes) and that 'outputScoreToMidi'  
 method actually writes a new MIDI-file when generating is done.  
 
 #### MarkovGenerator
 
-MarkovGenerator class acts as a service class for melody and rhythm generation and handling midi. Therefore
-only one method (combining notes differernt properties together) is tested since other functionality is other 
-classes responsibility. 
+MarkovGenerator class acts as a service class for melody and rhythm generation and handling midi. It doesn't provide any crucial logic to test with, hence no tests are required.
 
 #### SequenceCreator
 
 SequenceCreator is tested if given a simple trie 'createSequence' method returns a right sequence. Also
 if getting random node works when given array of nodes where one node is given some weight and other
 ones are weighted zero. Hence only one node could be picked.
+
+#### GeneratorService
+
+GeneratorService provides some functionality to generate and combine note pitches, rhythms and durations. Generating and combining is tested with small list of values from 0 to 9.
+
+#### Generator
+
+Generator class a general purpose class for generating pitches, rhythm or durations. Class has a parse
+function to parse right component out of 'NoteObject' which is determined by a string 'melody', 'rhythm'
+or 'duration'. Addition to that it is tested that generated set is not longer than given training set.
 
 
 #### Test coverage report  
