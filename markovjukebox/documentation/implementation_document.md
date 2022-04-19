@@ -20,7 +20,11 @@ Generator class in general class for generation of melodies, rhythms, durations 
 
 #### GeneratorService
 
-Is a service class for generating different components of a song.
+Service class for generating different components of a song.
+
+#### MarkovGenerator
+
+Service class for whole song creation based on training set. Leads the whole process of handling midi input/output and passing data to generate a song.  
 
 #### SequenceCreator
 
@@ -31,7 +35,6 @@ the sequence creation uninterrupted
 
 Reads midi file, converts file to 'NoteObject' arraylist and returns it. When song is generated, outputs 
 given 'NoteObject' arraylist as a MIDI-file
-
 
 
 ## Time and space complexity  
