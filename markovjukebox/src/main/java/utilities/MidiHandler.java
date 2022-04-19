@@ -29,7 +29,6 @@ public class MidiHandler {
      */
     public ArrayList<NoteObject> getTrainingData() {
         inputMidiToScore();
-
         return midiToArray();
     }
 
@@ -64,6 +63,7 @@ public class MidiHandler {
         for (int i = 0; i < generatedNotes.size(); i++) {
             NoteObject curNote = generatedNotes.get(i);
             int pitch = curNote.getPitch();
+
             double rhythm =  (double) curNote.getRhythm() / 100;
             double duration = (double) curNote.getDuration() / 100;
 
@@ -73,8 +73,9 @@ public class MidiHandler {
             phrase.add(note);
         }
 
-        phrase.setTempo(this.tempo);
+
         part.addPhrase(phrase);
+        part.setTempo(this.tempo);
 
         return part;
     }
@@ -83,7 +84,7 @@ public class MidiHandler {
      * Reads a midi-file and puts it to Score-object (file path is hard coded for now)
      */
     private void inputMidiToScore() {
-        Read.midi(this.inputScore, "../markovjukebox/src/main/java/bourree.mid");
+        Read.midi(this.inputScore, "../markovjukebox/src/main/java/phasedancebass.mid");
 
         this.instrument = this.inputScore.getPart(0).getInstrument();
         this.tempo = this.inputScore.getTempo();
@@ -91,7 +92,8 @@ public class MidiHandler {
 
     /**
      * From a Score-object, which represents given midi-input file, creates an ArrayList representation
-     * of pitches of given input
+     * of pitches of given input. Rhythm values and durations are multiplied by 100 because of the array
+     * representation in TrieNodes.
      *
      * @return arraylist representation of a input midi-file
      */
@@ -112,6 +114,12 @@ public class MidiHandler {
     }
 
 
+    /**
+     * Rounds to nearest five when original double value is multiplied by 100
+     *
+     * @param rhythm double value to round up to
+     * @return returns rounded double value * 100
+     */
     public int roundToNearestFive(double rhythm) {
         double r = rhythm * 100;
         r = 5 * Math.round(r / 5);

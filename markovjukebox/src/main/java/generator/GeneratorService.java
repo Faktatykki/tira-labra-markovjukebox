@@ -61,9 +61,7 @@ public class GeneratorService {
             int rhythm = generatedRhythms.get(i);
             int duration = generatedDurations.get(i);
 
-            if (rhythm > duration) {
-                rhythm = duration;
-            }
+            //tässä rhythm > duration
 
             generatedSong.add(new NoteObject(pitch, rhythm, duration));
         }
