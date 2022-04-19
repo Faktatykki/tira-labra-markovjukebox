@@ -14,17 +14,13 @@ Trie data structure where one can insert and search note sequences
 
 Node of trie data structure
 
-#### MarkovGenerator
+#### Generator
 
-Service class for generating rhythm and melody and handling MIDI.
+Generator class in general class for generation of melodies, rhythms, durations or dynamics of a note sequence.
 
-#### MelodyGenerator
+#### GeneratorService
 
-Generates melody sequence based on given trie utilizing 'SequenceCreator'
-
-#### RhythmGenerator
-
-For now placeholder for generating rhythm based on given trie
+Is a service class for generating different components of a song.
 
 #### SequenceCreator
 
@@ -38,7 +34,7 @@ given 'NoteObject' arraylist as a MIDI-file
 
 
 
-## Time Complexity  
+## Time and space complexity  
 
 
 Inserting to trie is O(nm), where: 
@@ -49,6 +45,9 @@ m = Quantity of elements
 Searching from trie is O(n), where:  
 
 n = Markov chain order  
+  
+ 
+Space complexity is O(nm) as well.  
 
 
 ##### Sources  
