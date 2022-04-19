@@ -39,7 +39,7 @@ public class TestMidiHandler {
         List<NoteObject> notes = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
-            notes.add(new NoteObject(i, i, i));
+            notes.add(new NoteObject(i, i, i, i));
         }
 
         this.mh.arrayToMidi(notes);

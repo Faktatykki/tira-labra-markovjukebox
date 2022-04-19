@@ -5,11 +5,13 @@ public class NoteObject {
     private int pitch;
     private int rhythm;
     private int duration;
+    private int dynamic;
 
-    public NoteObject(int pitch, int rhythm, int duration) {
+    public NoteObject(int pitch, int rhythm, int duration, int dynamic) {
         this.pitch = pitch;
         this.rhythm = rhythm;
         this.duration = duration;
+        this.dynamic = dynamic;
     }
 
     public int getPitch() {
@@ -22,6 +24,10 @@ public class NoteObject {
 
     public int getDuration() {
         return this.duration;
+    }
+
+    public int getDynamic() {
+        return this.dynamic;
     }
 
     public void setPitch(int pitch) {
@@ -38,6 +44,6 @@ public class NoteObject {
 
     @Override
     public String toString() {
-        return "Pitch: " + this.pitch + ", Rhythm: " + this.rhythm + ", Duration: " + this.duration + "\n";
+        return "Pitch: " + this.pitch + ", Rhythm: " + this.rhythm + ", Duration: " + this.duration + "Dynamic: " + this.dynamic + "\n";
     }
 }

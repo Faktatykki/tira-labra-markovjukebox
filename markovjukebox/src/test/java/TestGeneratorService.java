@@ -19,7 +19,7 @@ public class TestGeneratorService {
         this.trainingSet = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            this.trainingSet.add(new NoteObject(i, i + 1, i + 2));
+            this.trainingSet.add(new NoteObject(i, i + 1, i + 2, i + 3));
         }
 
         this.gs = new GeneratorService(3, trainingSet);
@@ -37,6 +37,7 @@ public class TestGeneratorService {
         List<Integer> pitches = new ArrayList<>();
         List<Integer> rhythms = new ArrayList<>();
         List<Integer> durations = new ArrayList<>();
+        List<Integer> dynamics = new ArrayList<>();
 
         for (int i = 0; i < this.trainingSet.size(); i++) {
                 NoteObject note = this.trainingSet.get(i);
@@ -44,9 +45,10 @@ public class TestGeneratorService {
                 pitches.add(note.getPitch());
                 rhythms.add(note.getRhythm());
                 durations.add(note.getDuration());
+                dynamics.add(note.getDynamic());
         }
 
-        List<NoteObject> l = gs.combineGeneratedProperties(pitches, rhythms, durations);
+        List<NoteObject> l = gs.combineGeneratedProperties(pitches, rhythms, durations, dynamics);
 
         int lastIdx = l.size() - 1;
 
@@ -60,9 +62,11 @@ public class TestGeneratorService {
         List<Integer> list1 = new ArrayList<>();
         List<Integer> list2 = new ArrayList<>();
         List<Integer> list3 = new ArrayList<>();
+        List<Integer> list4 = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             list1.add(i);
+            list4.add(i);
 
             if (i < 5) {
                 list2.add(i);
@@ -72,7 +76,7 @@ public class TestGeneratorService {
             }
         }
 
-        int minListSize = gs.getMinListSize(list1.size(), list2.size(), list3.size());
+        int minListSize = gs.getMinListSize(list1.size(), list2.size(), list3.size(), list4.size());
 
         assertTrue(minListSize == 5);
     }

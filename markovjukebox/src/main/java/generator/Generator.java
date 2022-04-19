@@ -67,6 +67,6 @@ public class Generator {
             return trainingSet.stream().map(note -> note.getDuration()).collect(Collectors.toList());
         }
 
-        return null;
+        return trainingSet.stream().map(note -> note.getDynamic()).collect(Collectors.toList());
     }
 }

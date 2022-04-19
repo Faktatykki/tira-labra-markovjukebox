@@ -13,6 +13,7 @@ public class GeneratorService {
     private Generator melodyGenerator;
     private Generator rhythmGenerator;
     private Generator durationGenerator;
+    private Generator dynamicGenerator;
 
     public GeneratorService(int order, List<NoteObject> trainingSet) {
         this.order = order;
@@ -23,6 +24,7 @@ public class GeneratorService {
 
         this.rhythmGenerator = new Generator(this.order, this.longestDuration, "rhythm");
         this.durationGenerator = new Generator(this.order, this.longestDuration, "duration");
+        this.dynamicGenerator = new Generator(this.order, this.longestDuration, "dynamic");
     }
 
     /**
@@ -35,8 +37,9 @@ public class GeneratorService {
         List<Integer> melody = this.melodyGenerator.generate(this.trainingSet);
         List<Integer> rhythm = this.rhythmGenerator.generate(this.trainingSet);
         List<Integer> duration = this.durationGenerator.generate(this.trainingSet);
+        List<Integer> dynamic = this.dynamicGenerator.generate(this.trainingSet);
 
-        List<NoteObject> generatedSong = combineGeneratedProperties(melody, rhythm, duration);
+        List<NoteObject> generatedSong = combineGeneratedProperties(melody, rhythm, duration, dynamic);
 
         return generatedSong;
     }
@@ -51,19 +54,19 @@ public class GeneratorService {
      *
      * @return list of NoteObjects which represents the generated song
      */
-    public List<NoteObject> combineGeneratedProperties(List<Integer> generatedPitches, List<Integer> generatedRhythms, List<Integer> generatedDurations) {
+    public List<NoteObject> combineGeneratedProperties(List<Integer> generatedPitches, List<Integer> generatedRhythms, List<Integer> generatedDurations, List<Integer> generatedDynamics) {
         List<NoteObject> generatedSong = new ArrayList<>();
 
-        int loopSize = getMinListSize(generatedPitches.size(), generatedRhythms.size(), generatedDurations.size());
+        int loopSize = getMinListSize(generatedPitches.size(), generatedRhythms.size(), generatedDurations.size(), generatedDynamics.size());
 
         for (int i = 0; i < loopSize; i++) {
             int pitch = generatedPitches.get(i);
             int rhythm = generatedRhythms.get(i);
             int duration = generatedDurations.get(i);
+            int dynamic = generatedDynamics.get(i);
+            //here optional rhythm > duration but doesnt seem to matter
 
-            //tässä rhythm > duration
-
-            generatedSong.add(new NoteObject(pitch, rhythm, duration));
+            generatedSong.add(new NoteObject(pitch, rhythm, duration, dynamic));
         }
 
         return generatedSong;
@@ -101,7 +104,7 @@ public class GeneratorService {
      *
      * @return the smallest list size value
      */
-    public int getMinListSize(int list1, int list2, int list3) {
-        return Math.min(Math.min(list1, list2), list3);
+    public int getMinListSize(int list1, int list2, int list3, int list4) {
+        return Math.min(Math.min(list1, list2), Math.min(list3, list4));
     }
 }

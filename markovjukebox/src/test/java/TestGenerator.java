@@ -15,18 +15,20 @@ public class TestGenerator {
     private Generator melody;
     private Generator rhythm;
     private Generator duration;
+    private Generator dynamic;
 
     @Before
     public void init() {
         this.notes = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            notes.add(new NoteObject(i, i + 1, i + 2));
+            notes.add(new NoteObject(i, i + 1, i + 2, i + 3));
         }
 
         this.melody = new Generator(3, 10, "melody");
         this.rhythm = new Generator(3, 10, "rhythm");
         this.duration = new Generator(3, 10, "duration");
+        this.dynamic = new Generator(3, 10, "dynamic");
     }
 
     @Test
@@ -47,14 +49,5 @@ public class TestGenerator {
         assertTrue(m.get(size) == 9);
         assertTrue(r.get(size) == 10);
         assertTrue(d.get(size) == 11);
-    }
-
-    @Test
-    public void parseReturnsNullIfGivenComponentNotCompatible() {
-        Generator g = new Generator(3, 10, "feeling");
-
-        List<Integer> l = g.parse(notes);
-
-        assertTrue(l == null);
     }
 }

@@ -62,17 +62,17 @@ public class MidiHandler {
 
         for (int i = 0; i < generatedNotes.size(); i++) {
             NoteObject curNote = generatedNotes.get(i);
-            int pitch = curNote.getPitch();
 
+            int pitch = curNote.getPitch();
             double rhythm =  (double) curNote.getRhythm() / 100;
             double duration = (double) curNote.getDuration() / 100;
+            int dynamic = curNote.getDynamic();
 
-            Note note = new Note(pitch, rhythm);
+            Note note = new Note(pitch, rhythm, dynamic);
             note.setDuration(duration);
 
             phrase.add(note);
         }
-
 
         part.addPhrase(phrase);
         part.setTempo(this.tempo);
@@ -106,8 +106,9 @@ public class MidiHandler {
             int note = phrase.getNote(i).getPitch();
             int rhythm = roundToNearestFive(phrase.getNote(i).getRhythmValue());
             int duration = roundToNearestFive(phrase.getNote(i).getDuration());
+            int dynamic = phrase.getNote(i).getDynamic();
 
-            sequence.add(new NoteObject(note, rhythm, duration));
+            sequence.add(new NoteObject(note, rhythm, duration, dynamic));
         }
 
         return sequence;
