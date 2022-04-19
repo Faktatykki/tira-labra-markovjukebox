@@ -84,7 +84,7 @@ public class MidiHandler {
      * Reads a midi-file and puts it to Score-object (file path is hard coded for now)
      */
     private void inputMidiToScore() {
-        Read.midi(this.inputScore, "../markovjukebox/src/main/java/phasedancebass.mid");
+        Read.midi(this.inputScore, "../markovjukebox/src/main/java/bourree.mid");
 
         this.instrument = this.inputScore.getPart(0).getInstrument();
         this.tempo = this.inputScore.getTempo();
