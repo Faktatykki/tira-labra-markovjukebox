@@ -24,7 +24,7 @@ public class GeneratorService {
 
         this.rhythmGenerator = new Generator(this.order, this.longestDuration, "rhythm");
         this.durationGenerator = new Generator(this.order, this.longestDuration, "duration");
-        this.dynamicGenerator = new Generator(this.order, this.longestDuration, "dynamic");
+        this.dynamicGenerator = new Generator(this.order, 128, "dynamic");
     }
 
     /**
