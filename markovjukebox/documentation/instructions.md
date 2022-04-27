@@ -29,6 +29,7 @@ Program takes MIDI-files as an input and outputs the generated song as a MIDI-fi
 can input files be given.
 
   
+  
 ### Creating reports
 
 Jacoco coverage report:
@@ -42,16 +43,12 @@ If that didn't work, try:
 mvn clean jacoco:prepare-agent install jacoco:report
 ```
 
-### JavaDoc
-
 Create JavaDoc:
 ```
 mvn javadoc:javadoc
 ```
 JavaDoc file can be found in:
 *target/site/apidocs/index.html*
-
-### Checkstyle 
 
 Checkstyle: 
 
