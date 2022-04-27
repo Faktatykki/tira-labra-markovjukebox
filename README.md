@@ -30,45 +30,5 @@ mvn compile exec:java -Dexec.mainClass=Main
 
 ```
 
-**Week 4 note!**
-
-The program is using 'bourree.mid' as a training data and after executing there should be
-a file 'Testi.mid' which is the generated song based on Bach's Bourrée. 
-
-### Testing
-
-Run tests: 
-
-```
-mvn test
-```
   
-Jacoco coverage report:
 
-```
-mvn jacoco:report
-```
-If that didn't work, try: 
-
-```
-mvn clean jacoco:prepare-agent install jacoco:report
-```
-
-### JavaDoc
-
-Create JavaDoc:
-```
-mvn javadoc:javadoc
-```
-JavaDoc file can be found in:
-*target/site/apidocs/index.html*
-
-### Checkstyle 
-
-Checkstyle: 
-
-```
-mvn jxr:jxr checkstyle:checkstyle
-```
-
-Errors can be found in *target/site/checkstyle.html*
