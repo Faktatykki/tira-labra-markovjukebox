@@ -3,6 +3,8 @@
 
 ## Documentation
 
+[Instructions](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/instructions.md)
+
 [Requirement Specification](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/requirement_specification.md) 
 
 [Test documentation](https://github.com/Faktatykki/tira-labra-markovjukebox/blob/main/markovjukebox/documentation/testdocumentation.md)  
