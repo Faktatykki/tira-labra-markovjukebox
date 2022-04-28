@@ -66,6 +66,10 @@ public class GeneratorService {
             int dynamic = generatedDynamics.get(i);
             //here optional rhythm > duration but doesnt seem to matter
 
+            if (rhythm > duration) {
+                rhythm = duration;
+            }
+
             generatedSong.add(new NoteObject(pitch, rhythm, duration, dynamic));
         }
 

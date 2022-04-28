@@ -59,7 +59,7 @@
                     <excludes>
                         <exclude>generator/*MarkovGenerator.*</exclude>
                         <exclude>*Main.*</exclude>
-                        <exclude>*PerformanceTests.*</exclude>
+                        <exclude>utilities/*utilities.PerformanceTests.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

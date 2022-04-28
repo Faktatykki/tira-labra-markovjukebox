@@ -34,10 +34,10 @@ public class MarkovGenerator {
      *
      * outputs a new midi-file of generated notes
      */
-    public void generateSong() {
-        readTrainingSetFromMidi();
+    public void generateSong(String file) {
+        readTrainingSetFromMidi(file);
 
-        GeneratorService gs = new GeneratorService(3, this.trainingSet);
+        GeneratorService gs = new GeneratorService(this.order, this.trainingSet);
 
         List<NoteObject> generatedSong = gs.generate();
 
@@ -48,7 +48,7 @@ public class MarkovGenerator {
      * Reads the given training data and passes it to GeneratorService to generate
      * a song based on training data
      */
-    public void readTrainingSetFromMidi() {
-        this.trainingSet = midiHandler.getTrainingData();
+    public void readTrainingSetFromMidi(String file) {
+        this.trainingSet = midiHandler.getTrainingData(file);
     }
 }

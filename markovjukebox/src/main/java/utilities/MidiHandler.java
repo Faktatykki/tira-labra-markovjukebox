@@ -27,8 +27,8 @@ public class MidiHandler {
      *
      * @return Array list representation of input midi-file
      */
-    public ArrayList<NoteObject> getTrainingData() {
-        inputMidiToScore();
+    public ArrayList<NoteObject> getTrainingData(String file) {
+        inputMidiToScore(file);
         return midiToArray();
     }
 
@@ -83,8 +83,12 @@ public class MidiHandler {
     /**
      * Reads a midi-file and puts it to Score-object (file path is hard coded for now)
      */
-    private void inputMidiToScore() {
-        Read.midi(this.inputScore, "../markovjukebox/src/main/java/bourree.mid");
+    private void inputMidiToScore(String file) {
+        if (!file.contains(".mid")) {
+            file = file + ".mid";
+        }
+
+        Read.midi(this.inputScore, "../markovjukebox/src/main/java/" + file);
 
         this.instrument = this.inputScore.getPart(0).getInstrument();
         this.tempo = this.inputScore.getTempo();
@@ -113,7 +117,6 @@ public class MidiHandler {
 
         return sequence;
     }
-
 
     /**
      * Rounds to nearest five when original double value is multiplied by 100

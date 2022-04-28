@@ -22,14 +22,14 @@ public class TestMidiHandler {
 
     @Test
     public void midiToArrayWorks() {
-        List<NoteObject> notes = this.mh.getTrainingData();
+        List<NoteObject> notes = this.mh.getTrainingData("bourree.mid");
 
         assertThat(notes, instanceOf(List.class));
     }
 
     @Test
     public void readsRightAmountOfData() {
-        List<NoteObject> notes = this.mh.getTrainingData();
+        List<NoteObject> notes = this.mh.getTrainingData("bourree.mid");
 
         assertEquals(notes.size(), 264);
     }
