@@ -22,7 +22,7 @@ mvn clean jacoco:prepare-agent install jacoco:report
 
 ### Performance testing
 
-The program has simple tests (for now) for inserting 100000 notes in trie with different Markov chain orders.
+The program has simple tests (for now) for inserting and searching with sequence sizes of 10, 100, 1000, 10000, 100000, 1000000 in/from trie with Markov chain orders of 1, 2, 3, 4 and 5.
 
 
 ### Unit testing  
