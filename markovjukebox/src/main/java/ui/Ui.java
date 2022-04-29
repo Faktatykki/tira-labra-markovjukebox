@@ -22,6 +22,8 @@ public class Ui {
 
         boolean on = true;
 
+        clearScreen();
+
         System.out.println("###########################");
         System.out.println("###########################\n");
         System.out.println("MARKOV JUKEBOX, LET'S PARTY");
@@ -36,6 +38,8 @@ public class Ui {
             System.out.println("###########################");
             System.out.print("What do you want to do: ");
             String choice = io.nextLine();
+
+            clearScreen();
 
             if (choice.toLowerCase().equals("x")) {
                 System.out.println("\nSee you!");
@@ -93,18 +97,19 @@ public class Ui {
             String order = io.nextLine();
             System.out.println("\n##########################");
 
+            clearScreen();
+
             if (pickASong(song, order)) {
                 System.out.println("\nSong generated successfully!\n");
             }
 
-            System.out.println("To create an other song press enter, or to go back type 1");
+            System.out.println("To create an other song press enter, or to go back type 'X'");
             String stop = io.nextLine();
 
-            if (validateChoice(stop)) {
+            if (stop.toLowerCase().equals("x")) {
                 break;
             }
         }
-
     }
 
     public boolean pickASong(String file, String order) {
@@ -119,5 +124,10 @@ public class Ui {
         }
 
         return true;
+    }
+
+    public void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
