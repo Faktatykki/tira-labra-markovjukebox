@@ -44,7 +44,7 @@ public class MidiHandler {
         this.outputScore.addPart(part);
 
         try {
-            Write.midi(this.outputScore, "../markovjukebox/src/main/java/Testi.mid");
+            Write.midi(this.outputScore, "../markovjukebox/src/main/java/generatedSong.mid");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

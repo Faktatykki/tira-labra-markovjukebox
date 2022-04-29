@@ -44,7 +44,7 @@ public class TestMidiHandler {
 
         this.mh.arrayToMidi(notes);
 
-        File testFile = new File("../markovjukebox/src/main/java/Testi.mid");
+        File testFile = new File("../markovjukebox/src/main/java/generatedSong.mid");
 
         assertTrue(testFile.isFile());
 
