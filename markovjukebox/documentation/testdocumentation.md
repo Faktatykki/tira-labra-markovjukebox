@@ -44,7 +44,8 @@ method actually writes a new MIDI-file when generating is done.
 
 #### MarkovGenerator
 
-MarkovGenerator class acts as a service class for melody and rhythm generation and handling midi. It doesn't provide any crucial logic to test with, hence no tests are required.
+MarkovGenerator class acts as a service class for melody and rhythm generation and handling midi. Few tests for checking negative order values and the
+order value can't be bigger than the training set size.
 
 #### SequenceCreator
 
