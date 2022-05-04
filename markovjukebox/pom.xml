@@ -57,7 +57,6 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>generator/*MarkovGenerator.*</exclude>
                         <exclude>*Main.*</exclude>
                         <exclude>utilities/*PerformanceTests.*</exclude>
                         <exclude>*ui/*Ui.*</exclude>
