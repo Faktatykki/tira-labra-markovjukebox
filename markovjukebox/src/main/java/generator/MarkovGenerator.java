@@ -34,14 +34,20 @@ public class MarkovGenerator {
      *
      * outputs a new midi-file of generated notes
      */
-    public void generateSong(String file) {
+    public boolean generateSong(String file) {
         readTrainingSetFromMidi(file);
+
+        if (this.order > this.trainingSet.size() || this.order < 0) {
+            return false;
+        }
 
         GeneratorService gs = new GeneratorService(this.order, this.trainingSet);
 
         List<NoteObject> generatedSong = gs.generate();
 
         midiHandler.arrayToMidi(generatedSong);
+
+        return true;
     }
 
     /**

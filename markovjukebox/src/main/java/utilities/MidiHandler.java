@@ -119,7 +119,9 @@ public class MidiHandler {
     }
 
     /**
-     * Rounds to nearest five when original double value is multiplied by 100
+     * Rounds to nearest five when original double value is multiplied by 100, since
+     * midi-file's notes ew varie a lot, and rounding to nearest five makes the values
+     * consistent
      *
      * @param rhythm double value to round up to
      * @return returns rounded double value * 100

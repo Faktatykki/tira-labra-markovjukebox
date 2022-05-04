@@ -46,7 +46,7 @@ public class Ui {
                 break;
             }
             if (!validateChoice(choice)) {
-                System.out.println("Please only number values! And otherwise right values god damn it!");
+                System.out.println("Please only number values!");
                 continue;
             }
 
@@ -101,6 +101,8 @@ public class Ui {
 
             if (pickASong(song, order)) {
                 System.out.println("\nSong generated successfully!\n");
+            } else {
+                System.out.println("\nOrder of the song can not be longer than the training set or negative value\n");
             }
 
             System.out.println("To create an other song press enter, or to go back type 'X'");
@@ -117,13 +119,16 @@ public class Ui {
         try {
             int value = Integer.valueOf(order);
             this.mg = new MarkovGenerator(value);
-            mg.generateSong(file);
+
+            if (mg.generateSong(file)) {
+                return true;
+            }
         } catch (Exception e) {
             System.out.println("\nSomething got messed up!!\n");
             return false;
         }
 
-        return true;
+        return false;
     }
 
     public void clearScreen() {
