@@ -64,7 +64,6 @@ public class GeneratorService {
             int rhythm = generatedRhythms.get(i);
             int duration = generatedDurations.get(i);
             int dynamic = generatedDynamics.get(i);
-            //here optional rhythm > duration but doesnt seem to matter
 
             if (rhythm > duration) {
                 rhythm = duration;

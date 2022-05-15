@@ -3,8 +3,6 @@ package ui;
 import generator.MarkovGenerator;
 import utilities.PerformanceTests;
 
-import java.awt.*;
-import java.io.File;
 import java.util.Scanner;
 
 public class Ui {
@@ -18,6 +16,9 @@ public class Ui {
         this.io = new Scanner(System.in);
     }
 
+    /**
+     * The main menu of Ui
+     */
     public void start() {
 
         boolean on = true;
@@ -56,6 +57,11 @@ public class Ui {
         }
     }
 
+    /**
+     * According to a given value in main menu chooses the next action
+     *
+     * @param choice numeric value
+     */
     public void chooseAction(String choice) {
 
         int value = Integer.valueOf(choice);
@@ -68,6 +74,12 @@ public class Ui {
         }
     }
 
+    /**
+     * Checks if given value is valid by checking if it's a numerical value (an integer to be exact)
+     *
+     * @param choice
+     * @return
+     */
     public boolean validateChoice(String choice) {
 
         boolean success;
@@ -82,10 +94,17 @@ public class Ui {
         return success;
     }
 
+    /**
+     * Runs performance tests
+     *
+     */
     public void runThroughPerformanceTests() {
-        pt.populateTrieTest();
+        pt.populateTrieAndGenerateSongTest();
     }
 
+    /**
+     * Menu for generating a new song
+     */
     public void generateSong() {
         boolean on = true;
 
@@ -114,6 +133,14 @@ public class Ui {
         }
     }
 
+    /**
+     * Checks if given midi-file name is valid and is found from directory
+     *
+     * @param file file name
+     * @param order Markov chain order
+     *
+     * @return if file is valid and file is found returns true. Otherwise false.
+     */
     public boolean pickASong(String file, String order) {
 
         try {
@@ -131,6 +158,9 @@ public class Ui {
         return false;
     }
 
+    /**
+     * When the program is run in terminal, this clears the screen.
+     */
     public void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

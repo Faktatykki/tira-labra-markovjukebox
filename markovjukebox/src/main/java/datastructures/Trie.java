@@ -11,7 +11,7 @@ public class Trie {
     private int order;
 
 
-    public Trie(int order, int range) {
+    public Trie(int order, int range) {;
         this.range = range;
         this.root = new TrieNode(-1, this.range);
         this.order = order + 1;
