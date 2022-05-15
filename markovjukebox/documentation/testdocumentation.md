@@ -22,8 +22,7 @@ mvn clean jacoco:prepare-agent install jacoco:report
 
 ### Performance testing
 
-The program has tests for inserting and searching with sequence sizes of 10, 100, 1000, 10000, 100000, 1000000 in/from trie with Markov chain orders of 1, 2, 3, 4 and 5. Tests for generating songs are added as well (Through GeneratorService class since proper midi-files for that kind of testing
-is hard to find).
+The program has tests for inserting and searching with sequence sizes of 10, 100, 1000, 10000, 100000, 1000000 in/from trie with Markov chain orders of 1, 2, 3, 4 and 5. Tests for generating songs are added as well with sequence sizes 10, 100, 1000, 10000 and 100000 (through GeneratorService class since proper midi-files for that kind of testing is hard to find).
 
 
 ### Unit testing  
