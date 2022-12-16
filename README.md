@@ -1,6 +1,6 @@
 # Markov's Jukebox
 
-Music generating program. The program takes MIDI-file (works only on single track files with single melody line) and generates a new song utilizing Markov chain. 
+Music generating program. The program takes MIDI-file (works only on single track files with single melody line) as an input and generates a new song utilizing Markov chain. 
 
 Part of University of Helsinki, department of computer science course "Datastructures and Algorithms lab". 
 
