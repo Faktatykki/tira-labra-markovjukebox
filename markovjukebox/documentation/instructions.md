@@ -24,7 +24,7 @@ This executes a program and opens the user interface.
 ### Input
   
 Program takes MIDI-files as an input and outputs the generated song as a MIDI-file. UI gives instructions in which form
-can input files be given.
+input files can be given.
 
   
   
